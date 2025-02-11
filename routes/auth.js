@@ -55,6 +55,15 @@ router.post("/register", upload.single("profilePicture"), async (req, res) => {
 
 // Блокировка аккаунта после 5 неудачных попыток
 const loginAttempts = {};
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+      if (err) {
+          console.error("Logout error:", err);
+          return res.status(500).send("Error logging out");
+      }
+      res.redirect("/login"); // Перенаправление на страницу входа
+  });
+});
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -158,6 +167,20 @@ router.post("/upload-profile", upload.single("profilePicture"), async (req, res)
       res.redirect("/profile"); // Возвращаем пользователя на страницу профиля
     } catch (err) {
       console.error(err);
+      res.status(500).json({ error: "Server error" });
+    }
+  });
+  router.post("/profile/delete", async (req, res) => {
+    if (!req.session.user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+  
+    try {
+      await User.findByIdAndDelete(req.session.user._id);
+      req.session.destroy(); // Удаляем сессию
+      res.redirect("/register"); // Перенаправляем на регистрацию
+    } catch (err) {
+      console.error("Error deleting profile:", err);
       res.status(500).json({ error: "Server error" });
     }
   });
