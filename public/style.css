@@ -1,34 +1,70 @@
 body {
     font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
     text-align: center;
-    background-color: #f4f4f4;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-container img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
 }
 
 input {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 8px;
     border: 1px solid #ccc;
-}
-
-
-button:hover {
-    background: darkblue;
-}
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px; 
+    border-radius: 5px;
+    width: 100%;
 }
 
 button {
-    border-radius: 5px;
-    display: inline-block;
     padding: 10px;
-    background: blue;
+    background-color: #007bff;
     color: white;
-    border: 1px solid #ccc;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 15px;
 }
