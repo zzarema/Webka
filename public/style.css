@@ -1,14 +1,34 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 50px;
+    background-color: #f4f4f4;
 }
-form {
-    display: inline-block;
-    text-align: left;
-}
-input, button {
+
+input {
     display: block;
-    margin: 10px 0;
+    margin: 10px auto;
     padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+button:hover {
+    background: darkblue;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+}
+
+button {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
 }
