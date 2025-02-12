@@ -8,31 +8,35 @@
 </head>
 <body>
     <h2>Your Profile</h2>
-    <p><strong>Username:</strong> <%= user.username %></p>
-    <p><strong>Email:</strong> <%= user.email %></p>
+    <div class="profile-container">
+        <img src="<%= user.profilePicture %>" alt="Profile Picture">
+        <div>
+            <p><strong>Username:</strong> <%= user.username %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+        </div>
+    </div>
 
     <h3>Edit Profile</h3>
     <form action="/profile/edit" method="POST" enctype="multipart/form-data">
-        <label>Username:</label>
-        <input type="text" name="username" value="<%= user.username %>" required>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="<%= user.username %>" required>
     
-        <label>Email:</label>
-        <input type="email" name="email" value="<%= user.email %>" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= user.email %>" required>
     
-        <label>Profile Picture:</label>
-        <img src="<%= user.profilePicture %>" alt="Profile Picture" width="100">
-        <input type="file" name="profilePicture" accept="image/*">
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
     
         <button type="submit">Save Changes</button>
     </form>
     
-   
     <h3>Delete Account</h3>
     <form action="/profile/delete" method="POST" onsubmit="return confirm('Are you sure? This action cannot be undone.');">
-        <button type="submit" style="color: red;">Delete Account</button>
+        <button type="submit" class="delete-btn">Delete Account</button>
     </form>
-
-    <br>
-    <a href="/dashboard">Back to Dashboard</a>
+    
+    <div class="actions">
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
 </body>
 </html>
